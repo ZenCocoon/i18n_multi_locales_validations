@@ -1,0 +1,52 @@
+I18n Multi Locales Validations
+==============================
+
+i18n_multi_locales_validations is a plugin by Sébastien Grosjean (aka ZenCocoon <http://zencocoon.com>)
+
+
+I18n Multi Locales Validations functionality
+============================================
+
+i18n_multi_locales_validations facilitates multi-locales attributes validations. It's made to validates attributes from Globalize2 translations models.
+
+
+Requirement
+===========
+
+It requires :
+
+* Rails 2.3 (or Rails 2.2 with I18n.available_locales patch)
+* Globalize2 with this patches on top
+** http://globalize2.lighthouseapp.com/projects/15085/tickets/9-patch-tested-allow-to-specify-locale-as-variable
+** http://globalize2.lighthouseapp.com/projects/15085/tickets/6-add-locale-parameter-to-setters
+
+
+WARNING
+=======
+
+This is still under heavy development, use at your own risk
+
+NOTICE : Error message are still not properly handled as doesn't refer to the specific locale
+
+
+I18n Multi Locales Validations usage
+====================================
+
+Just add the option :locale => YOUR_LOCALE to your validations.
+
+eg: 
+
+# in models
+validates_presence_of :title, :locale => :"fr"
+validates_presence_of :title, :locale => [ :"fr", :"de" ]
+validates_presence_of :title, :locale => :all # This will validates for all locales found with I18n.available_locales
+
+
+I18n Multi Locales Validations effect
+=====================================
+
+The plugin overwrite few methods from ActiveRecord::Errors and ActiveRecord::Validations::ClassMethods
+To have a better understanding of what it does, the best way is still to look at the code
+itself.
+
+Copyright (c) 2009 Sébastien Grosjean, released under the MIT license
